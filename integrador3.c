@@ -3,7 +3,7 @@
 
 int main()
 {
-    int i, j, opcion, alumnos[10][2]={};
+    int i, j, opcion, dni, alumnos[10][2]={};
 
     do
     {
@@ -59,8 +59,14 @@ int main()
 
                 do
                 {
-                    
-                } while(dni!=arreglo[i][j])
+                    for(i=0;i<=9;i++)
+                    {
+                        if(dni==alumnos[i][0])
+                        {
+                            printf("\nAlumno DNI %d, nota %d\n", dni, alumnos[i][1]);
+                        }
+                    }
+                } while(dni!=alumnos[i][0]);
                  
                 break;
             case 3:
