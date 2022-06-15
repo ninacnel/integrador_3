@@ -1,31 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    int opcion, stock[100][3]={};
+    int opcion, i, p, cod, nuevoStock, sinStock=0;
+
+    printf("ingrese cantidad de productos a cargar\n");
+    scanf("%d", &p);
+    int codigo[p], stock[p];
+    char descrip[p];
 
     do
     {
-        printf("\nMEN%c\n1. Cargar productos\n2. Modificar stock\n3. Mostrar productos sin stock\n4. Listar productos\n5. Salir\n", 162);
-        scanf("%d", opcion);
+        printf("\nMEN%c\n1. Cargar productos\n2. Modificar stock\n3. Mostrar productos sin stock\n4. Listar productos\n5. Salir\n", 163);
+        scanf("%d", &opcion);
         switch (opcion)
         {
-        case case 1:
-            printf("ingrese c%cdigo del producto\n", 162);
-            scanf("%d", &stock[i][i+1]);
+        case 1:
+            for(i=0;i<p;i++)
+            {
+                printf("ingrese codigo del electrodomestico\n");
+                scanf("%d", &codigo[i]);
+                printf("ingrese descripcion del producto\n");
+                scanf("%s", &descrip[i]);
+                printf("ingrese stock del producto\n");
+                scanf("%d", &stock[i]);
+            }
             break;
         
-        case 4:
-            printf("ingrese codigo producto");
+        case 2:
+            printf("ingrese codigo del producto\n");
             scanf("%d", &cod);
-            printf("%d", arreglo[cod]);
+
+            for(i=0;i<p;i++)
+            {
+                if(cod==codigo[i])
+                {
+                    printf("Stock existente: %d. Ingrese stock actual\n", stock[i]);
+                    scanf("%d", &nuevoStock);
+                    stock[i]=nuevoStock;
+                }
+            }
+            if(cod!=codigo[i])
+            {
+                printf("electrodomestico inexistente\n");
+            }
+            break;
+        
+        case 3:
+            for(i=0;i<p;i++)
+            {
+                if(stock[i]==0)
+                {
+                    sinStock++;
+                }
+            }
+            if(sinStock>1)
+            {
+                printf("Hay %d productos sin stock\n", sinStock);
+            }else if(sinStock==1)
+            {
+                printf("Hay %d producto sin stock\n", sinStock);
+            }else
+            {
+                printf("No hay productos faltantes de stock\n");
+            }
+            
+            break;
+
+        case 4:
+            for(i=0;i<p;i++)
+            {
+                printf("cod: %d %s stock: %d\n", codigo[i], descrip, stock[i]);
+            }
+
+            break;
+
         default:
+            printf("opci%cn inv%clida.\n", 162, 160);
             break;
         }
     } while (opcion!=5);
     
-
 
     return 0;
     system("pause");
